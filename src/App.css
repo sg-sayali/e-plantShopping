@@ -1,0 +1,194 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #243b2b;
+  background: #f7faf5;
+}
+
+button {
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  background: #287747;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1c5a34;
+}
+
+button:disabled {
+  background: #9aa79d;
+  cursor: not-allowed;
+}
+
+.landing-page {
+  min-height: 100vh;
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.48),
+      rgba(0, 0, 0, 0.48)
+    ),
+    url('https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1600');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.landing-overlay {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.landing-page h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  margin: 50px 0 10px;
+}
+
+.landing-page > div > p {
+  font-size: 1.2rem;
+}
+
+.about-section {
+  max-width: 700px;
+  margin: 70px auto 20px;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.48);
+  border-radius: 12px;
+  line-height: 1.7;
+}
+
+.navbar {
+  background: #173d27;
+  color: white;
+  padding: 16px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.navbar button {
+  background: transparent;
+  color: white;
+}
+
+.navbar button:hover {
+  background: #2d6842;
+}
+
+.brand-button {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 8px;
+}
+
+.plants-page,
+.cart-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.plant-category {
+  margin: 35px 0;
+}
+
+.plant-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 22px;
+}
+
+.plant-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  padding-bottom: 18px;
+  text-align: center;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.09);
+}
+
+.plant-card img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+}
+
+.plant-card h3 {
+  margin: 16px 8px 8px;
+}
+
+.plant-card p {
+  font-weight: bold;
+}
+
+.cart-item {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  background: white;
+  padding: 18px;
+  border-radius: 10px;
+  margin: 18px 0;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+.cart-item img {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.cart-details {
+  flex: 1;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 12px 0;
+}
+
+.remove-button {
+  background: #b83232;
+}
+
+.remove-button:hover {
+  background: #8f2424;
+}
+
+.secondary-button {
+  margin-top: 20px;
+  background: #52665a;
+}
+
+@media (max-width: 600px) {
+  .cart-item {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .cart-item img {
+    width: 100%;
+    height: 200px;
+  }
+
+  .navbar {
+    justify-content: center;
+  }
+}
