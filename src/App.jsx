@@ -15,7 +15,7 @@ function App() {
 
   if (page === 'home') {
     return (
-      <main className="landing-page">
+      <main className="background-image">
         <div className="landing-overlay">
           <h1>Welcome to Paradise Nursery</h1>
           <p>Bring Nature Home</p>

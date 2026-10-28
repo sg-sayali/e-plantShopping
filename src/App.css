@@ -28,7 +28,7 @@ button:disabled {
   cursor: not-allowed;
 }
 
-.landing-page {
+.background-image {
   min-height: 100vh;
   background-image: linear-gradient(
       rgba(0, 0, 0, 0.48),
@@ -47,12 +47,12 @@ button:disabled {
   margin: 0 auto;
 }
 
-.landing-page h1 {
+.background-image h1 {
   font-size: clamp(2.5rem, 6vw, 4.5rem);
   margin: 50px 0 10px;
 }
 
-.landing-page > div > p {
+.background-image > div > p {
   font-size: 1.2rem;
 }
 

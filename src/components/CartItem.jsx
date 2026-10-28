@@ -16,14 +16,14 @@ function CartItem({ onContinueShopping }) {
 
   const handleDecrement = (item) => {
     if (item.quantity <= 1) {
-      dispatch(removeItem(item.id));
+      dispatch(removeItem(item.name));
     } else {
       dispatch(updateQuantity({ id: item.id, quantity: item.quantity - 1 }));
     }
   };
 
   const handleRemove = (item) => {
-    dispatch(removeItem(item.id));
+    dispatch(removeItem(item.name));
   };
 
   return (
