@@ -1,8 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  removeItem,
-  updateQuantity,
-} from '../redux/CartSlice';
+import { removeItem, updateQuantity } from '../redux/CartSlice';
 
 function CartItem({ onContinueShopping }) {
   const dispatch = useDispatch();
@@ -12,6 +9,22 @@ function CartItem({ onContinueShopping }) {
     (sum, item) => sum + item.price * item.quantity,
     0
   );
+
+  const handleIncrement = (item) => {
+    dispatch(updateQuantity({ id: item.id, quantity: item.quantity + 1 }));
+  };
+
+  const handleDecrement = (item) => {
+    if (item.quantity <= 1) {
+      dispatch(removeItem(item.id));
+    } else {
+      dispatch(updateQuantity({ id: item.id, quantity: item.quantity - 1 }));
+    }
+  };
+
+  const handleRemove = (item) => {
+    dispatch(removeItem(item.id));
+  };
 
   return (
     <main className="cart-page">
@@ -24,46 +37,20 @@ function CartItem({ onContinueShopping }) {
           {items.map((item) => (
             <article className="cart-item" key={item.id}>
               <img src={item.image} alt={item.name} />
-
               <div className="cart-details">
                 <h3>{item.name}</h3>
                 <p>Unit price: ₹{item.price}</p>
                 <p>Subtotal: ₹{item.price * item.quantity}</p>
 
                 <div className="quantity-controls">
-                  <button
-                    disabled={item.quantity <= 1}
-                    onClick={() =>
-                      dispatch(
-                        updateQuantity({
-                          id: item.id,
-                          quantity: item.quantity - 1,
-                        })
-                      )
-                    }
-                  >
-                    −
-                  </button>
-
+                  <button onClick={() => handleDecrement(item)} aria-label={`Decrease ${item.name} quantity`}>−</button>
                   <span>{item.quantity}</span>
-
-                  <button
-                    onClick={() =>
-                      dispatch(
-                        updateQuantity({
-                          id: item.id,
-                          quantity: item.quantity + 1,
-                        })
-                      )
-                    }
-                  >
-                    +
-                  </button>
+                  <button onClick={() => handleIncrement(item)} aria-label={`Increase ${item.name} quantity`}>+</button>
                 </div>
 
                 <button
-                  className="remove-button"
-                  onClick={() => dispatch(removeItem(item.id))}
+                  className="cart-item-delete"
+                  onClick={() => handleRemove(item)}
                 >
                   Delete
                 </button>
@@ -72,7 +59,7 @@ function CartItem({ onContinueShopping }) {
           ))}
 
           <h2>Total: ₹{total}</h2>
-          <button onClick={() => alert('Coming Soon!')}>
+          <button onClick={() => window.alert('Coming Soon')}>
             Checkout
           </button>
         </>

@@ -17,7 +17,7 @@ function App() {
     return (
       <main className="landing-page">
         <div className="landing-overlay">
-          <h1>Paradise Nursery</h1>
+          <h1>Welcome to Paradise Nursery</h1>
           <p>Bring Nature Home</p>
           <p>Discover beautiful plants for every corner of your home.</p>
           <button onClick={() => setPage('plants')}>Get Started</button>

@@ -6,6 +6,10 @@ function ProductList() {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items);
 
+  const addedToCart = Object.fromEntries(
+    cartItems.map((item) => [item.name, true])
+  );
+
   const categories = [...new Set(plants.map((plant) => plant.category))];
 
   return (
@@ -14,29 +18,24 @@ function ProductList() {
       <p>Find the perfect plant for your green space.</p>
 
       {categories.map((category) => (
-        <section key={category} className="plant-category">
+        <section key={category} className="product-list">
           <h2>{category}</h2>
-
           <div className="plant-grid">
             {plants
               .filter((plant) => plant.category === category)
-              .map((plant) => {
-                const added = cartItems.some((item) => item.id === plant.id);
-
-                return (
-                  <article className="plant-card" key={plant.id}>
-                    <img src={plant.image} alt={plant.name} />
-                    <h3>{plant.name}</h3>
-                    <p>₹{plant.price}</p>
-                    <button
-                      disabled={added}
-                      onClick={() => dispatch(addItem(plant))}
-                    >
-                      {added ? 'Added to Cart' : 'Add to Cart'}
-                    </button>
-                  </article>
-                );
-              })}
+              .map((plant) => (
+                <article className="plant-card" key={plant.id}>
+                  <img src={plant.image} alt={plant.name} />
+                  <h3>{plant.name}</h3>
+                  <p>₹{plant.price}</p>
+                  <button
+                    disabled={Boolean(addedToCart[plant.name])}
+                    onClick={() => dispatch(addItem(plant))}
+                  >
+                    {addedToCart[plant.name] ? 'Added to Cart' : 'Add to Cart'}
+                  </button>
+                </article>
+              ))}
           </div>
         </section>
       ))}
